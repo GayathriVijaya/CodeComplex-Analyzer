@@ -165,7 +165,6 @@ Open your browser and navigate to:
 cpp
 Copy code
 http://127.0.0.1:5000/
-
 📌 Use Cases
 Quick code reviews
 
@@ -176,4 +175,3 @@ Learning clean coding practices
 Comparing alternative implementations
 
 Identifying refactoring opportunities
-
