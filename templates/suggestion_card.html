@@ -1,0 +1,14 @@
+
+<div class="suggestions-container" style="text-align: center; margin: 32px auto 0 auto; max-width: 830px;">
+  <h3 style="margin-bottom: 14px; color: #7a6ff6; font-size: 1.2em;">Code Simplification Suggestions:</h3>
+  <ul style="display: inline-block; text-align: left; margin-bottom: 24px; color: #25174d;">
+    {% for suggestion in suggestions %}
+      <li style="margin-bottom: 8px;">{{ suggestion }}</li>
+    {% endfor %}
+  </ul>
+  <div style="text-align: center;">
+    <button class="reduce-btn" style="margin-top: 12px; padding: 14px 40px; border-radius: 16px; font-size: 1em; background: linear-gradient(90deg, #7a6ff6 18%, #c7b5ff 90%); color: white; border: none; cursor: pointer; font-weight: 600; box-shadow: 0 4px 15px rgba(122, 111, 246, 0.3); transition: all 0.2s ease;">
+      View Enhanced Code Version
+    </button>
+  </div>
+</div>

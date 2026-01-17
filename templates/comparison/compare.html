@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Compare Code Complexity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/compare.css') }}" />
+  </head>
+  <body>
+    <div class="header-bar">
+      <div class="header-left">
+        <!-- <img src="your-tool-logo.png" class="header-logo" alt="Logo" /> -->
+        <span class="header-title">CodeComplex-Analyzer</span>
+      </div>
+      <div class="header-right">
+         <a href="/" class="header-link">Home</a>
+       <a href="/compare" class="header-link">Compare</a>
+
+      
+      </div>
+    </div>
+
+    <div class="top-section">
+      <div class="top-title">Compare Code Complexity</div>
+      <div class="top-subtitle">
+        Analyze and compare cyclomatic complexity between two code snippets side by side.
+      </div>
+      <div class="top-desc">
+        Get detailed explanations and see which code is more maintainable.
+      </div>
+    </div>
+
+    <div class="center-row">
+      {% include 'comparison/compare_form.html' %}
+    </div>
+
+    <div id="comparison-results-placeholder">
+      {% if results %}
+        {% include 'comparison/compare_results.html' %}
+      {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/compare.js') }}"></script>
+  </body>
+</html>

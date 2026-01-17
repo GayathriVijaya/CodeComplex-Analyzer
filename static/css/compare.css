@@ -1,0 +1,205 @@
+/* Comparison Page Styles */
+.comparison-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.code-inputs-row {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 20px;
+}
+
+.code-input-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.input-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #7a6ff6;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.comparison-textarea {
+  width: 100%;
+  min-height: 400px;
+  max-height: 600px;
+  font-size: 1.05em;
+  color: #22203d;
+  background: #f8f7fd;
+  border: 2px solid #ece8fa;
+  border-radius: 18px;
+  padding: 22px;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  resize: vertical;
+}
+
+.compare-submit-btn {
+  padding: 18px 50px;
+  font-size: 1.1em;
+  background: linear-gradient(90deg, #836cf7 18%, #c0b4fe 85%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 14px #b6b6ee40;
+}
+
+.compare-submit-btn:hover {
+  background: linear-gradient(90deg, #b8aaff 12%, #7a6ff6 92%);
+  box-shadow: 0 6px 22px #bab6e890;
+  transform: translateY(-2px);
+}
+
+/* Results Styles */
+.comparison-results {
+  margin: 50px auto 0 auto;
+  max-width: 1400px;
+  padding: 0 20px;
+}
+
+.results-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #7a6ff6;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.results-row {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 30px;
+}
+
+.result-container {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(122, 111, 246, 0.1);
+  border: 1px solid #ece8fa;
+}
+
+.complexity-score {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0ff;
+}
+
+.score-label {
+  font-size: 1.1em;
+  color: #666;
+  font-weight: 600;
+}
+
+.score-value {
+  font-size: 2em;
+  font-weight: 700;
+  color: #7a6ff6;
+  margin-left: 10px;
+}
+
+.explanation-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #7a6ff6;
+  margin-bottom: 15px;
+}
+
+.explanation-content {
+  background: #fcfbff;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95em;
+  color: #25174d;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  border: 1px solid #eee6ff;
+}
+
+/* Summary Styles */
+.comparison-summary {
+  background: linear-gradient(135deg, #f8f7ff 0%, #f0eeff 100%);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  border: 2px solid #e6e1ff;
+}
+
+.summary-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #7a6ff6;
+  margin-bottom: 15px;
+}
+
+.summary-content {
+  font-size: 1.1em;
+  color: #25174d;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .code-inputs-row,
+  .results-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .code-input-container,
+  .result-container {
+    width: 100%;
+  }
+  
+  .comparison-textarea {
+    min-height: 300px;
+  }
+}
+/* Beautiful Purple Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f8f7ff 0%, #f0eeff 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
+  border-radius: 10px;
+  border: 2px solid #f8f7ff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7C3AED 0%, #6D28D9 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: #f8f7ff;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8B5CF6 #f8f7ff;
+}

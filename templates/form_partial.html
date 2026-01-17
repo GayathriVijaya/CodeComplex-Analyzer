@@ -1,0 +1,14 @@
+
+<form method="POST" action="/" style="width:100%;">
+  <textarea name="code" placeholder="Paste your C++ code here..." autocomplete="off" class="cc-textarea">{{ code|default('') }}</textarea>
+  <div class="complexity-actions">
+    <button class="ccbtn" type="submit">Analyze Code Complexity</button>
+  </div>
+  {% if complexity is defined and complexity is not none %}
+    <div class="complexity-result-row">
+      <div class="ccbtn-result">Cyclomatic Complexity for your code is: {{ complexity }}</div>
+      <button class="want-btn" type="button" id="why-btn">View Detailed Analysis</button>
+    </div>
+   
+  {% endif %}
+</form>

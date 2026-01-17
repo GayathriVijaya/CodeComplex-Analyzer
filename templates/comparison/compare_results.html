@@ -1,0 +1,42 @@
+<div class="comparison-results">
+  <div class="results-title">Comparison Results</div>
+  
+  <div class="results-row">
+    <!-- Left Results -->
+    <div class="result-container">
+      <div class="complexity-score">
+        <span class="score-label">Cyclomatic Complexity:</span>
+        <span class="score-value">{{ complexity1 }}</span>
+      </div>
+      <div class="explanation-section">
+        <div class="explanation-title">Explanation</div>
+        <pre class="explanation-content">{{ explanation1 }}</pre>
+      </div>
+    </div>
+
+    <!-- Right Results -->
+    <div class="result-container">
+      <div class="complexity-score">
+        <span class="score-label">Cyclomatic Complexity:</span>
+        <span class="score-value">{{ complexity2 }}</span>
+      </div>
+      <div class="explanation-section">
+        <div class="explanation-title">Explanation</div>
+        <pre class="explanation-content">{{ explanation2 }}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comparison-summary">
+    <div class="summary-title">Summary</div>
+    <div class="summary-content">
+      {% if complexity1 > complexity2 %}
+        The first code is more complex by {{ complexity1 - complexity2 }} points.
+      {% elif complexity2 > complexity1 %}
+        The second code is more complex by {{ complexity2 - complexity1 }} points.
+      {% else %}
+        Both codes have the same complexity level.
+      {% endif %}
+    </div>
+  </div>
+</div>

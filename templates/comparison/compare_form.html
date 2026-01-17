@@ -1,0 +1,25 @@
+<div class="comparison-container">
+  <div class="comparison-form">
+    <form method="POST" action="/compare" style="width: 100%;">
+      <div class="code-inputs-row">
+        <!-- Left Code Input -->
+        <div class="code-input-container">
+          <div class="input-title">First Code</div>
+          <textarea name="code1" placeholder="Paste your first C++ code here..." autocomplete="off" class="cc-textarea comparison-textarea">{{ code1|default('') }}</textarea>
+        </div>
+
+        <!-- Right Code Input -->
+        <div class="code-input-container">
+          <div class="input-title">Second Code</div>
+          <textarea name="code2" placeholder="Paste your second C++ code here..." autocomplete="off" class="cc-textarea comparison-textarea">{{ code2|default('') }}</textarea>
+        </div>
+      </div>
+
+      <div class="complexity-actions" style="margin-top: 30px;">
+        <button class="ccbtn compare-submit-btn" type="submit">
+          Compare Complexity
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

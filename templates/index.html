@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cyclomatic Complexity Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      /* Additional styles for the requested changes */
+      .top-title {
+        font-size: 3.8em;
+        font-weight: 800;
+        font-family: "Montserrat", Arial, sans-serif;
+        background: linear-gradient(90deg, #9476f7 10%, #6196ff 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        margin-bottom: 0.4em;
+        text-shadow: 0 4px 20px rgba(148, 118, 247, 0.3);
+      }
+      
+      /* Make the two description lines flow together */
+      .top-subtitle {
+        font-size: 1.4em;
+        color: #f4f5ff;
+        margin: 0.4em 0 0.1em 0;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .top-desc {
+        font-size: 1.2em;
+        color: #cddcff;
+        margin: 0.1em 0 0.2em 0;
+        font-weight: 300;
+        letter-spacing: 0.2px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* Reduce gap between description and "Try it now!" */
+      .try-text {
+        font-size: 1.2em;
+        color: #edefff;
+        margin: 20px 0 12px 0;  /* Reduced from 40px/20px */
+        font-weight: 600;
+        letter-spacing: 0.1em;
+      }
+      
+      /* Reduce gap between button and form */
+      .compare-btn {
+        background: linear-gradient(90deg, #e5e9ff 40%, #c9aaff 100%);
+        color: #2d218c;
+        padding: 18px 45px;
+        margin-top: 0.5em;
+        margin-bottom: 5px;  /* Reduced from 60px */
+        font-size: 1.2em;
+        font-weight: 700;
+        border-radius: 18px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 25px #b8b0ff52;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+      
+      .compare-btn:hover {
+        background: linear-gradient(90deg, #d9b1ff, #aaf6ff);
+        color: #322855;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px #b8b0ff70;
+      }
+      
+      /* Reduce gap between button and form box */
+      .center-row {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        margin-top: 2px;  /* Reduced from 20px */
+      }
+      
+      /* Make the text flow together like in the reference image */
+      .description-container {
+        display: inline-block;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .description-line {
+        display: inline;
+        font-size: 1.3em;
+        color: #f4f5ff;
+        line-height: 1.6;
+      }
+      
+      .description-line.second {
+        background: linear-gradient(90deg, #10b981, #3b82f6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-bar">
+      <div class="header-left">
+        <!-- <img  src="../images/coding.png class="header-logo" alt="Logo" /> -->
+        <span class="header-title">CodeComplex-Analyzer</span>
+      </div>
+      <div class="header-right">
+      
+          <a href="/" class="header-link">Home</a>
+       <a href="/compare" class="header-link">Compare</a>
+
+        
+      </div>
+    </div>
+    <div class="top-section">
+      <div class="top-title">Intelligent Code Complexity Analysis</div>
+      
+      <!-- New layout with flowing text like the reference image -->
+      <!-- <div class="description-container">
+        <span class="description-line">
+          Humanize AI transforms AI code structure into clear, maintainable, human-level design. 
+        </span>
+        <span class="description-line second">
+          Our advanced analyzer ensures perfect transparency while preserving code meaning.
+        </span>
+      </div> -->
+        <div class="top-subtitle">
+        Transform complex code into clear, maintainable designs with AI-powered insights
+      </div>
+      <div class="top-desc">
+        Our advanced analyzer ensures perfect transparency while preserving code
+        meaning.
+      </div>
+      
+      <div class="try-text">Try it now!</div>
+      <button class="compare-btn" onclick="window.location.href='/compare'">
+       Compare Two Code Files →
+      </button>
+    </div>
+    <div class="center-row">
+      <div class="straddle-box">{% include 'form_partial.html' %}</div>
+    </div>
+    <div id="explanation-placeholder">
+      {% if show_explanation_box %} {% include 'explanation_box.html' %} {%
+      endif %}
+    </div>
+    <!-- suggestion_card.html -->
+    <div id="suggestion-placeholder"></div>
+
+    <div id="refactored-code-placeholder"></div>
+  
+
+    </div>  <!-- End of split-centered-row -->
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

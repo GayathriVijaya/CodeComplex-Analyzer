@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>About - Cyclomatic Complexity Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(
+                to bottom,
+                #020005 0%,
+                #030109 80vh,
+                #fafafe 60vh,
+                #fafafe 100%
+            );
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Semi-Transparent Fixed Navbar */
+        .header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5vw;
+            min-height: 68px;
+            background: rgba(15, 5, 30, 0.7) !important;
+            backdrop-filter: blur(15px) !important;
+            -webkit-backdrop-filter: blur(15px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo {
+            width: 44px;
+            height: 44px;
+            margin-right: 14px;
+        }
+
+        .header-title {
+            font-size: 1.45em;
+            font-weight: 700;
+            color: #fff !important;
+            letter-spacing: 1px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .header-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: 1.08em;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 4px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .header-link:hover {
+            color: #fff !important;
+        }
+
+        /* About Page Content */
+        .about-container {
+            max-width: 1200px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+
+        .about-hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .about-title {
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(90deg, #9476f7 10%, #6196ff 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .about-subtitle {
+            font-size: 1.4em;
+            color: #f4f5ff;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Content Grid with Left-Right Layout */
+        .content-grid {
+            display: grid;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(122, 111, 246, 0.1);
+            border: 1px solid rgba(122, 111, 246, 0.15);
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .text-content {
+            padding-right: 20px;
+        }
+
+        .visual-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .mccabe-photo {
+            width: 280px;
+            height: 320px;
+            background: linear-gradient(135deg, #7a6ff6, #8b5cf6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1em;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(122, 111, 246, 0.3);
+        }
+
+        .card-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #7a6ff6;
+            margin-bottom: 25px;
+        }
+
+        .card-content {
+            color: #333;
+            line-height: 1.7;
+            font-size: 1.1em;
+        }
+
+        .complexity-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .complexity-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(122, 111, 246, 0.1);
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .complexity-list li:last-child {
+            border-bottom: none;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .language-item {
+            background: linear-gradient(135deg, #f8f7ff, #f0eeff);
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(122, 111, 246, 0.2);
+            font-weight: 500;
+            color: #5a4fcf;
+        }
+
+        /* Formula Section with White Background */
+        .formula-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(122, 111, 246, 0.1);
+        }
+
+        .formula-main {
+            font-family: 'Courier New', monospace;
+            font-size: 2em;
+            font-weight: 700;
+            color: #7a6ff6;
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f7ff, #f0eeff);
+            border-radius: 15px;
+            border: 2px solid rgba(122, 111, 246, 0.2);
+        }
+
+        .decision-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .decision-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #7a6ff6;
+            box-shadow: 0 5px 20px rgba(122, 111, 246, 0.1);
+        }
+
+        .decision-item h4 {
+            color: #7a6ff6;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* McCabe Standards Section */
+        .mccabe-section {
+            background: linear-gradient(135deg, #7a6ff6, #8b5cf6);
+            color: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+        }
+
+        .mccabe-section .card-title {
+            color: white;
+            text-align: center;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .standard-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .standard-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .standard-desc {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        /* Team Section */
+        .team-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(122, 111, 246, 0.1);
+            border: 1px solid rgba(122, 111, 246, 0.1);
+        }
+
+        .member-name {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #7a6ff6;
+            margin-bottom: 10px;
+        }
+
+        .member-role {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .text-content {
+                padding-right: 0;
+            }
+            
+            .about-title {
+                font-size: 2.5em;
+            }
+            
+            .content-card {
+                padding: 30px;
+            }
+            
+            .formula-main {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8f7ff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #8B5CF6, #7C3AED);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="header-bar">
+        <div class="header-left">
+            <img src="your-tool-logo.png" class="header-logo" alt="Logo" />
+            <span class="header-title">Cyclomatic Complexity Tool</span>
+        </div>
+        <div class="header-right">
+            <a href="/" class="header-link">Home</a>
+            <a href="/compare" class="header-link">Compare</a>
+        </div>
+    </div>
+
+    <!-- About Content -->
+    <div class="about-container">
+        <!-- Hero Section -->
+        <div class="about-hero">
+            <h1 class="about-title">About Our Tool</h1>
+            <p class="about-subtitle">Understanding code complexity through advanced cyclomatic analysis</p>
+        </div>
+
+        <!-- What is Cyclomatic Complexity -->
+        <div class="content-card">
+            <h2 class="card-title">What is Cyclomatic Complexity?</h2>
+            <div class="split-layout">
+                <div class="text-content">
+                    <div class="card-content">
+                        <p>Cyclomatic Complexity is a software metric that measures the complexity of a program by counting the number of linearly independent paths through the source code.</p>
+                        
+                        <ul class="complexity-list">
+                            <li>Measures code maintainability and readability</li>
+                            <li>Estimates testing effort required</li>
+                            <li>Identifies risk of defects and bugs</li>
+                            <li>Provides overall code quality assessment</li>
+                            <li>Helps in refactoring decisions</li>
+                        </ul>
+                        
+                        <p>Lower complexity values indicate simpler, more maintainable code, while higher values suggest complex logic that may be difficult to test and maintain.</p>
+                    </div>
+                </div>
+                <div class="visual-content">
+                    <div class="mccabe-photo">
+                        Thomas J. McCabe<br>
+                        Creator of Cyclomatic Complexity
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complexity Formula -->
+        <div class="formula-section">
+            <h2 class="card-title">Complexity Calculation Formula</h2>
+            <div class="card-content">
+                <p>The cyclomatic complexity is calculated using a simple formula based on decision points in your code:</p>
+                
+                <div class="formula-main">
+                    M = D + 1
+                </div>
+                
+                <p>Where <strong>M</strong> is the cyclomatic complexity and <strong>D</strong> is the number of decision points in the code.</p>
+                
+                <h3 style="color: #7a6ff6; margin: 30px 0 20px 0;">Decision Points Include:</h3>
+                <div class="decision-points">
+                    <div class="decision-item">
+                        <h4>If Statements</h4>
+                        <p>Each if, else if condition</p>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Loops</h4>
+                        <p>While, for, do-while loops</p>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Switch Cases</h4>
+                        <p>Each case statement</p>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Conditional Operators</h4>
+                        <p>Ternary operators (?:)</p>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Logical Operators</h4>
+                        <p>&&, || in conditions</p>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Exception Handling</h4>
+                        <p>Try-catch blocks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- McCabe Standards -->
+        <div class="mccabe-section">
+            <h2 class="card-title">McCabe Complexity Standards</h2>
+            <div class="card-content">
+                <p style="text-align: center; margin-bottom: 30px; opacity: 0.9;">We adhere to Thomas J. McCabe's established complexity thresholds:</p>
+                
+                <div class="standards-grid">
+                    <div class="standard-item">
+                        <div class="standard-value">1-10</div>
+                        <div class="standard-desc">Simple program<br>Low risk</div>
+                    </div>
+                    <div class="standard-item">
+                        <div class="standard-value">11-20</div>
+                        <div class="standard-desc">Moderately complex<br>Moderate risk</div>
+                    </div>
+                    <div class="standard-item">
+                        <div class="standard-value">21-50</div>
+                        <div class="standard-desc">Complex program<br>High risk</div>
+                    </div>
+                    <div class="standard-item">
+                        <div class="standard-value">50+</div>
+                        <div class="standard-desc">Untestable program<br>Very high risk</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supported Languages -->
+        <div class="content-card">
+            <h2 class="card-title">Supported Languages</h2>
+            <div class="card-content">
+                <p>Our tool currently supports complexity analysis for these programming languages:</p>
+                <div class="language-grid">
+                    <div class="language-item">C++</div>
+                    <div class="language-item">Java</div>
+                    <div class="language-item">Python</div>
+                    <div class="language-item">JavaScript</div>
+                    <div class="language-item">C#</div>
+                    <div class="language-item">TypeScript</div>
+                    <div class="language-item">PHP</div>
+                    <div class="language-item">Ruby</div>
+                </div>
+                <p style="margin-top: 25px; color: #666;">We're continuously expanding our language support to help more developers write better code.</p>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="team-section">
+            <div class="content-card">
+                <h2 class="card-title">Development Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-name">Your Name</div>
+                        <div class="member-role">Lead Developer</div>
+                        <div class="contact-info">
+                            Email: your.name@email.com<br>
+                            Role: Full-stack Development & Analysis
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-name">Friend's Name</div>
+                        <div class="member-role">Co-developer</div>
+                        <div class="contact-info">
+                            Email: friend.name@email.com<br>
+                            Role: Backend & Algorithm Design
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 40px; color: #666; font-style: italic; font-size: 1.1em;">
+                    We're passionate about helping developers write better, more maintainable code through intelligent complexity analysis.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
