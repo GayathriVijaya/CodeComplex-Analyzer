@@ -162,16 +162,7 @@ pip install flask
 python app.py
 Open your browser and navigate to:
 
-cpp
-Copy code
+
 http://127.0.0.1:5000/
-📌 Use Cases
-Quick code reviews
 
-Academic and mini-projects
 
-Learning clean coding practices
-
-Comparing alternative implementations
-
-Identifying refactoring opportunities
