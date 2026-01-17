@@ -160,9 +160,8 @@ git clone https://github.com/GayathriVijaya/CodeComplex-Analyzer.git
 cd CodeComplex-Analyzer
 pip install flask
 python app.py
+
 Open your browser and navigate to:
-
-
 http://127.0.0.1:5000/
 
 
