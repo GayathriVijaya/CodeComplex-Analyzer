@@ -1,54 +1,128 @@
+# =========================
 # Python
+# =========================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.py[codz]
+*$py.class
 .Python
+
+# Virtual Environments
 env/
 venv/
 .venv/
+ENV/
 env.bak/
 venv.bak/
+venv*/
 
-# IDE
+# =========================
+# Flask
+# =========================
+instance/
+.webassets-cache
+
+# =========================
+# IDEs & Editors
+# =========================
 .vscode/
 .idea/
+.spyderproject
+.spyproject
+.ropeproject
 *.swp
 *.swo
 
-# OS
+# =========================
+# OS Files
+# =========================
 .DS_Store
 Thumbs.db
 
+# =========================
 # Logs
+# =========================
 *.log
+pip-log.txt
+pip-delete-this-directory.txt
 npm-debug.log*
 
-# Temp
-*.tmp
-*.temp
+# =========================
+# Build / Distribution
+# =========================
+build/
+dist/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Virtual environments
-venv*/
-ENV/
+# =========================
+# Testing / Coverage
+# =========================
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
 
+# =========================
 # Database
+# =========================
 *.db
 *.sqlite
+db.sqlite3
+db.sqlite3-journal
 
-# Coverage
-.coverage
-htmlcov/
-
-# PyCharm
-.idea/
-
-# VSCode
-.vscode/
-
-# Jupyter Notebook
+# =========================
+# Jupyter
+# =========================
 .ipynb_checkpoints
 
-# Environment variables
+# =========================
+# Environment Variables
+# =========================
 .env
 .env.local
+.envrc
+
+# =========================
+# Mypy / Type Checkers
+# =========================
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+
+# =========================
+# Ruff / Linting
+# =========================
+.ruff_cache/
+
+# =========================
+# PyInstaller
+# =========================
+*.spec
+*.manifest
+
+# =========================
+# PyCharm (optional full ignore)
+# =========================
+#.idea/
