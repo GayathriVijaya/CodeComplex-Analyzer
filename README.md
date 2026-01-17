@@ -76,7 +76,7 @@ The tool determines which version is **easier to maintain**.
 
 ---
 
-### 🔵 Single Code Analysis – Example 1
+### 🔵 Single Code Analysis – Example 
 
 ![Single Code Analysis 1](images/single_code_1.png)
 
@@ -85,7 +85,7 @@ Decision constructs such as conditional statements and loops are identified duri
 
 ---
 
-### 🔵 Single Code Analysis – Example 2 (Line-by-Line Explanation)
+### 🔵 Single Code Analysis – Example  (Line-by-Line Explanation)
 
 ![Single Code Analysis 2](images/single_code_2.png)
 
@@ -94,7 +94,7 @@ It helps developers understand how individual lines increase complexity.
 
 ---
 
-### 🔵 Single Code Analysis – Example 3 (Refactoring Suggestions)
+### 🔵 Single Code Analysis – Example  (Refactoring Suggestions)
 
 ![Single Code Analysis 3](images/single_code_3.png)
 
@@ -103,7 +103,7 @@ If deep nesting or large functions are detected, a **refactored version of the o
 
 ---
 
-### 🟠 Code Comparison Result – Example 1
+### 🟠 Code Comparison Example
 
 ![Comparison Result 1](images/compare_1.png)
 
@@ -112,7 +112,7 @@ Each score is accompanied by a detailed explanation of contributing decision poi
 
 ---
 
-### 🟠 Code Comparison Result – Example 2 (Summary View)
+### 🟠 Code Comparison Example -Summary View
 
 ![Comparison Result 2](images/compare_2.png)
 
@@ -156,11 +156,14 @@ This helps developers quickly select the **more maintainable implementation**.
 ## 🏁 How to Run the Project
 
 ```bash
-git clone https://github.com/your-username/cpp-cyclomatic-complexity-analyzer.git
-cd cpp-cyclomatic-complexity-analyzer
+git clone https://github.com/GayathriVijaya/CodeComplex-Analyzer.git
+cd CodeComplex-Analyzer
 pip install flask
 python app.py
 Open your browser and navigate to:
+
+cpp
+Copy code
 http://127.0.0.1:5000/
 
 📌 Use Cases
@@ -173,3 +176,4 @@ Learning clean coding practices
 Comparing alternative implementations
 
 Identifying refactoring opportunities
+
